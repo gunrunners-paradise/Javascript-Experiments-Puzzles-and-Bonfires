@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript test</title>
+    </head>
+    <body>
+    
+        <script>
+	function build() {
+		var arr = [];
+
+		for(var i=0;i<3;i++) {
+
+			arr.push(function() { console.log(i);} );
+		}
+		return arr;
+
+	}
+	var fs = build();
+	fs[0]();
+
+            
+            
+	function build2() {
+		var arr = [];
+
+for (var i = 0; i < 3; i++) {
+        arr.push(
+            (function(j) {
+                return function() {
+                    console.log(j);
+                }
+            }(i) )
+            )
+        
+    }
+        		return arr;
+
+    }
+	var fs2 = build2();
+            fs2[1]();
+        </script>
+    
+    </body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript test</title>
+    </head>
+    <body>
+    
+        <script>
+            var num1 = 0;
+	    var num2 = 1;
+	    var fibonacci = [];
+	    var sum = 1;
+
+	    while(sum<=1000000) {
+		    fibonacci.push(sum);
+		    sum = num1 + num2;
+		    num1 = num2;
+		    num2 = sum;
+	    }
+
+            document.write(fibonacci);
+        </script>
+    
+    </body>
+
+</html>
