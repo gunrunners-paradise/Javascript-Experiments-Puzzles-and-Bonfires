@@ -1,0 +1,75 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        
+        <p id="results"></p>
+        
+        <script>
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
+/*global define */
+
+
+
+var par = document.getElementById("results");
+
+var toy = {
+    name: "Megatron",
+    alignment: "Predacon",
+    getStats: function () {
+        "use strict";
+        var stats = this.name + ' ' + this.alignment;
+        return stats;
+    }
+};
+
+var logStats = function (arg1, arg2) {
+    "use strict";
+    console.log("Toy Stats: " + this.getStats());
+    par.innerHTML += this.getStats() + "<br>";
+    console.log("arguments: " + arg1 + ' ' + arg2);
+    console.log("------------------");
+    
+};
+
+var logToy = logStats.bind(toy);
+logToy('poo', 'butt');
+
+logStats.call(toy, "foo", "bar");
+logStats.apply(toy, ["foo", "bar"]);
+
+(function (arg1, arg2) {
+    "use strict";
+    console.log("Toy Stats: " + this.getStats());
+    par.innerHTML += arg1 + ' ' + arg2 + ' ' + this.name;
+    console.log("arguments: " + arg1 + ' ' + arg2);
+    console.log("==================");
+}.apply(toy, ["Delicious", "Food"]));
+
+// function borrowing
+
+var toy2 = {
+    name: "Optimus",
+    alignment: "Maximal"
+    
+};
+
+console.log(toy.getStats.apply(toy2));
+
+// function currying
+
+function multiply(a, b) {
+    "use strict";
+    return a * b;
+}
+
+var mByTwo = multiply.bind(this, 2);
+console.log(mByTwo(5));
+
+var mByThree = multiply.bind(this, 3);
+console.log(mByThree(5));
+
+	</script>
+    </body>
+</html>
