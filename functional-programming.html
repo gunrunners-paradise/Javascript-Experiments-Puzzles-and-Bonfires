@@ -1,0 +1,53 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+
+        <script>
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
+/*global define */
+
+function mapEach(arr, func) {
+    "use strict";
+
+    var newArr = [];
+    for (var i=0; i<arr.length; i++) {
+        newArr.push(func(arr[i]));
+        
+    }
+    return newArr;
+    
+}
+
+var arr = [1, 2, 3, 4, 5];
+console.log(arr);
+
+var arr2 = mapEach(arr, function(item) {
+    return item * 2;
+});
+console.log(arr2);
+
+var arr3 = mapEach(arr, function(item) {
+    return item > 2;
+});
+console.log(arr3);
+
+var checkPastLimit = function(limiter, item) {
+    return item > limiter;
+};
+
+var arr4 = mapEach(arr, checkPastLimit.bind(this, 3));
+console.log(arr4);
+
+var pastLimitS = function(limiter) {
+    return function(limiter, item) {
+        return item > limiter ;
+    }.bind(this, limiter)
+};
+
+var arr5 = mapEach(arr, pastLimitS(4));
+console.log(arr5);
+	</script>
+    </body>
+</html>
